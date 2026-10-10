@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyBoost AI</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+    margin:0;
+}
+
+header{
+    background:#2563eb;
+    color:white;
+    text-align:center;
+    padding:50px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+textarea{
+    width:100%;
+    height:150px;
+    padding:10px;
+    margin-top:10px;
+}
+
+button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    margin-top:10px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+#output{
+    margin-top:20px;
+    padding:15px;
+    background:#eef2ff;
+    border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>📚 StudyBoost AI</h1>
+<p>Notizen eingeben → Lernzettel erhalten</p>
+</header>
+
+<div class="container">
+    <div class="card">
+
+        <h2>Deine Notizen</h2>
+
+        <textarea id="input"
+        placeholder="Füge hier deinen Unterrichtsstoff ein..."></textarea>
+
+        <button onclick="generateSummary()">
+            Lernzettel erstellen
+        </button>
+
+        <div id="output"></div>
+
+    </div>
+</div>
+
+<script>
+function generateSummary(){
+
+const text=document.getElementById("input").value;
+
+const output=document.getElementById("output");
+
+if(text.length<20){
+output.innerHTML="Bitte mehr Text eingeben.";
+return;
+}
+
+output.innerHTML=
+"<h3>Zusammenfassung:</h3>" +
+"<p>" +
+text.substring(0,200) +
+"...</p>";
+}
+</script>
+
+</body>
+</html>
